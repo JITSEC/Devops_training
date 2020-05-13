@@ -1,12 +1,8 @@
 Docker Exercises
 ================
 
-[Tutorial home](https://people.irisa.fr/Anthony.Baire/)
 
-License: Creative Commons BY-NC 3.0
-
-
-Part 2. Containers
+Part 1. Containers
 ------------------
 
 1.  Check that docker is correctly running and that you have permission to use
@@ -158,7 +154,7 @@ docker start -i pensive_hodgkin
         * `docker attach` to reattach to the console of a detached container
 
 
-Part 3. Container inputs/outputs
+Part 2. Container inputs/outputs
 --------------------------------
 
 1.  **(external volume)** Run a container with `-v/--volume` to mount an external volume.
@@ -361,7 +357,7 @@ Part 3. Container inputs/outputs
     ```
 
 
-Part 5. Using the builder
+Part 3. Using the builder
 -------------------------
 
 
