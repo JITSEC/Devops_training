@@ -45,11 +45,11 @@ Part 2. Containers
     ```
 
     (you may also write `docker run debian` which is equivalent: `:latest` is
-    the defaut tag if none are provided)
+    the defaut tag if none is provided)
 
     Nothing happens? actually the container has already terminated, you can
     display it with `docker ps`, but add `-a/--all` because non-running
-    container are not displayed by default.
+    (stopped) containers are not displayed by default.
 
     ```
     docker ps -a
@@ -68,7 +68,7 @@ Part 2. Containers
     docker run debian cat /etc/motd
     ```
 
-5.  **(stdin)** Let's go back to bash, this time we want interact with the
+5.  **(stdin)** Let's go back to bash, this time we want to interact with the
     shell. To keep stdin open, we launch the container with `-i/--interactive`.
 
     ```
@@ -114,10 +114,10 @@ docker start -i pensive_hodgkin
     same container you can note that these changes are still present. However
     they will not be present in the other container (even if they are running
     the same image) because docker uses a copy-on-write filesystem. Use the
-    command `docker diff` to show the difference of a container from its image.
+    command `docker diff` to show the difference between a container and its image.
 
     Remember that all changes inside a container are thrown away when the
-    container is removed. If we want save a container filesytem for later use,
+    container is removed. If we want to save a container filesytem for later use,
     we have to *commit* the conainer (i.e take a snapshot).
 
     ```
@@ -134,7 +134,7 @@ docker start -i pensive_hodgkin
 
 9.  **(rm)** You now have too many dead containers in your engine. You should
     use `docker rm` to remove them. Alternatively you can run `docker container
-    prune` which removes *all* dead container.
+    prune` which removes *all* dead containers.
 
 10. **(extras)** If you still have extra time, you can experiment
     * the other `docker run` options we introduced so far:
@@ -399,7 +399,7 @@ Here are the main commands:
 
 By default `docker-compose up` works in the foreground. If the command is
 interrupted (Control-C), all container are stopped and the command terminates.
-You can use `docker compose up -d` to launch it in the background.
+You can use `docker-compose up -d` to launch it in the background.
 
 ### nginx server
 
@@ -411,7 +411,7 @@ This example is located in the **nginx** directory:
 *   `nginx/nginx/` -> contains sources of our docker image (Dockerfile)
 *   `nginx/www/` -> contains the static files we want to serve
 *   `nginx/log/` -> will store the server logs
-*   `nginx/docker-compose.yml` -> docker compose configuration
+*   `nginx/docker-compose.yml` -> docker-compose configuration
 
 Procedure:
 
@@ -478,7 +478,7 @@ details! We will use the default config and install the source from the
 4.  **(first run)** Once you are done, run:
 
     ```
-    docker compose up
+    docker-compose up
     ```
         
     Once etherpad is started, open <http://localhost:9001/> in your web
@@ -632,25 +632,26 @@ details! We will use the default config and install the source from the
     docker diff etherpad_etherpad_1
     ```
     
-    This command shows the differences in the container filesystem (from the
-    docker image). In the list we can see that the session key `SESSIONKEY.txt`
+    This command shows the differences between the container filesystem 
+    and the docker image used to run it. In the list we can see that 
+    the session key `SESSIONKEY.txt`
     is stored outside the external volume, thus it will be dropped across
     restarts.
 
     While this is not critical for the app (a new key is regenerated anyway),
-    it can be a burden for the users because their session will be closed when
+    it can be a burden for the users because their sessions will be closed when
     the server is restarted.
 
     Modify the Dockerfile to have the session key stored in the var volume (for
     example with a symbolic link).
 
-9. **(metadata)** You should add `EXPOSE` and a `VOLUME` line to your
-   Dockerfile to tell about the listened tcp port and the external volume.
+9. **(metadata)** You should add an `EXPOSE` and a `VOLUME` line to your
+   Dockerfile to inform about the listened TCP port and the external volume.
 
 
 ### etherpad (mysql backend)
 
-As a second step, will will extend our etherpad image to make it use a mysql
+As a second step, we will extend our etherpad image to make it use a mysql
 server as a storage backend.
 
 This exercise is located in the **etherpad-mysql** directory. The Dockerfile
@@ -672,7 +673,7 @@ You will need to:
 3.  once done, run `docker-compose up` and see what happens.
 
 4.  if you have extra time, you can modify the etherpad image to delay the
-    execution of nojs until the mysql server is ready and responding.
+    execution of nodejs until the mysql server is ready and responding.
 
 
 ### mini-httpd
