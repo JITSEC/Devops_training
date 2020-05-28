@@ -3,6 +3,7 @@
   become: yes
   roles:
     - java
+    - tomcat
     - docker
     - registry
     - jenkins
