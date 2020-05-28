@@ -13,12 +13,12 @@ If you run into issues with Ansible complaining about executable permissions, tr
 config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=700,fmode=600"]. You'll find an example in the
 
 To Deploy both vms (cd and prod) :
-vagrant up cd
-vagrant up prod
+* vagrant up cd
+* vagrant up prod
 
 To Access inside both Vms :
-vagrant ssh cd
-vagrant ssh prod
+* vagrant ssh cd
+* vagrant ssh prod
 
 
 Exercice Objectives :
