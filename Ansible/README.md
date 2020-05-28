@@ -5,6 +5,17 @@ You'll need Git installed. The rest of the tools will be set up as part of the e
 CI/CD Environment
 We'll set up Jenkins environment using Ansible. Create a VM with Ubuntu (use your VirtualBox VM or CloudVM) and run the bootstrap.sh script. The only purpose of that script is to install Ansible. Once that is done, Ansible will make sure that Docker is installed and Jenkins process is running.
 
+Install Vagrant :
+https://www.vagrantup.com/downloads.html
+
+Execute Vragrant script :
+If you run into issues with Ansible complaining about executable permissions, try modifying the Vagrantfile's synced_folder entry from config.vm.synced_folder ".", "/vagrant" to
+config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=700,fmode=600"]. You'll find an example in the
+
+To Deploye both vms (cd and prod) :
+vagrant up cd
+vagrant up prod
+
 
 Exercice Objectives :
 * **Step 1 - CI/CD Environment** : Auto Installation of Jenkins in a Virtual Machine (not a docker container). 
