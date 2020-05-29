@@ -23,6 +23,6 @@ To Access inside both Vms :
 
 Exercice Objectives :
 * **Step 1 - CI/CD Environment** : Auto Installation of Jenkins in a Virtual Machine (not a docker container). 
-* **Step 2 - CI/CD Environment** : Interconnect services : Jenkins, Github. Write the scripts in Jenkins for it to order Ansible to AutoDeploy. 
+* **Step 2 - CI/CD Environment** : Interconnect services : Jenkins, Github, Sonar, Nexus, Maven. Write the scripts in Jenkins for it to order Ansible to AutoDeploy. 
 * **Step 3 - Application Deployment** : Using Ansible and Docker (2 webservers, 1 Database server, 1 Front HA), deploy a provided webapp available through a Github repository.
 
