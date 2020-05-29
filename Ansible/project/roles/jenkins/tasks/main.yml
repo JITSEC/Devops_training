@@ -1,0 +1,28 @@
+- name: Installation Java 8
+  apt: update_cache=yes name=openjdk-8-jdk state=installed
+
+- name: Ajout cle repo Jenkins
+  apt_key:
+	url: "https://pkg.jenkins.io/debian/jenkins-ci.org.key"
+	state: present
+
+- name: Ajout repository Jenkins
+  apt_repository:
+	repo: deb http://pkg.jenkins.io/debian-stable binary/
+	state: present
+
+- name: Installation Jenkins package
+  apt: update_cache=yes name=jenkins state=installed
+
+
+- name: Attente de Jenkins pour demarrer (peut etre long...)
+  wait_for: timeout=40
+
+- name: Reprise du mot de passe Jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: Affichage du mot de passe pour "Unlock Jenkins"
+  debug:
+	var: result.stdout
