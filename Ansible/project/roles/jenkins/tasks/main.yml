@@ -3,13 +3,13 @@
 
 - name: Ajout cle repo Jenkins
   apt_key:
-	url: "https://pkg.jenkins.io/debian/jenkins-ci.org.key"
-	state: present
+    url: "https://pkg.jenkins.io/debian/jenkins-ci.org.key"
+    state: present
 
 - name: Ajout repository Jenkins
   apt_repository:
-	repo: deb http://pkg.jenkins.io/debian-stable binary/
-	state: present
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
 
 - name: Installation Jenkins package
   apt: update_cache=yes name=jenkins state=installed
@@ -25,4 +25,4 @@
 
 - name: Affichage du mot de passe pour "Unlock Jenkins"
   debug:
-	var: result.stdout
+    var: result.stdout
